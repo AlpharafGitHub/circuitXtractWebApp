@@ -1,8 +1,12 @@
 <?php
-// config.php
-$dsn     = "pgsql:host=localhost;port=5432;dbname=CircuitXtract;";
-$db_user = "postgres";
-$db_pass = "alpha@123";  // ← replace with your Postgres password
+require __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$dsn     = "pgsql:host=" . $_ENV['DB_HOST'] . ";port=" . $_ENV['DB_PORT'] . ";dbname=" . $_ENV['DB_NAME'] . ";";
+$db_user = $_ENV['DB_USER'];
+$db_pass = $_ENV['DB_PASS'];
 
 try {
     $pdo = new PDO($dsn, $db_user, $db_pass, [
