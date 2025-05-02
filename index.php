@@ -1,12 +1,20 @@
 <?php
-// index.php
-require __DIR__ . '/config.php';
+require __DIR__ . '/config/config.php';
 
-// If logged in, go to the dashboard
+// Check if the user is logged in
 if (isset($_COOKIE['user'])) {
-    header('Location: Dashboard/index.php');
+    // Redirect to the dashboard if logged in
+    header('Location: /dashboard');
     exit;
 }
 
-// Otherwise serve the static landing page
-readfile(__DIR__ . '/landing_page.html');
+// Serve the static landing page
+$landingPagePath = __DIR__ . '/public/index.php';
+
+if (file_exists($landingPagePath)) {
+    readfile($landingPagePath);
+} else {
+    // Display an error if the landing page is missing
+    http_response_code(404);
+    echo "Landing page not found.";
+}

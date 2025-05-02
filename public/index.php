@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Welcome | Analytics Pro</title>
-  <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <title>Welcome | CircuitXtract</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* Reset & base */
     * {
@@ -180,8 +179,8 @@
       <a href="#contacts">Contacts</a>
     </nav>
     <div class="auth-links">
-      <a href="login.php"  class="btn btn-login">Login</a>
-      <a href="signup.php" class="btn btn-signup">Sign Up</a>
+      <a href="\CircuitXtract\public\login.php" class="btn btn-login">Login</a>
+      <a href="\CircuitXtract\public\signup.php" class="btn btn-signup">Sign Up</a>
     </div>
   </header>
 
@@ -197,9 +196,7 @@
       low compute needs—to power a real‐time web application that estimates
       recovery value and supports eco-friendly recycling.
     </p>
-    <img
-      src="circuixtract_1.png"
-      alt="Project Mockup" />
+    <img src="\CircuitXtract\public\assets\images\circuixtract_1.png" alt="Project Mockup" />
   </section>
 
   <!-- About Us Section -->
@@ -207,7 +204,7 @@
     <h2>About Us</h2>
     <div class="profiles">
       <div class="profile-card">
-        <img src="rafael_1.png" alt="Rafael Eugenio" class="profile-img"/>
+        <img src="\CircuitXtract\public\assets\images\rafael_1.png" alt="Rafael Eugenio" class="profile-img"/>
         <h3>Rafael Eugenio</h3>
         <small>CPE | Intelligent Systems</small>
         <p>
@@ -216,7 +213,7 @@
         </p>
       </div>
       <div class="profile-card">
-        <img src="alven_2.jpg" alt="Alven Toraja" class="profile-img"/>
+        <img src="\CircuitXtract\public\assets\images\alven_2.jpg" alt="Alven Toraja" class="profile-img"/>
         <h3>Alven Toraja</h3>
         <small>CPE | System Administration</small>
         <p>

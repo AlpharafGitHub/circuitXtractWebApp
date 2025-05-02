@@ -1,8 +1,9 @@
 <?php
 // Dashboard/analytics.php
-require __DIR__ . '/../config.php';
+require __DIR__ . '/../../config/config.php';
+
 if (!isset($_COOKIE['user'])) {
-    header('Location: ../index.php');
+    header('Location: /');
     exit;
 }
 ?>
@@ -13,6 +14,7 @@ if (!isset($_COOKIE['user'])) {
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Analytics | CircuitXtract</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/assets/css/styles.css"/>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
     body,html{height:100%;background:#1C1C1E;color:#fff;}
@@ -37,13 +39,13 @@ if (!isset($_COOKIE['user'])) {
 </head>
 <body>
   <div class="container">
-    <nav class="sidebar">
+  <nav class="sidebar">
       <ul>
-        <li><a href="admin_dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-        <li><a href="analytics.php" class="active"><i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
-        <li><a href="settings.php"><i class="fas fa-cog"></i><span>Settings</span></a></li>
-        <li><a href="help.php"><i class="fas fa-question-circle"></i><span>Help</span></a></li>
-        <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/admin_dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/analytics.php"><i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/settings.php"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/help.php"><i class="fas fa-question-circle"></i><span>Help</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/logout.php" class="logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
       </ul>
     </nav>
     <div class="main">
@@ -91,7 +93,7 @@ if (!isset($_COOKIE['user'])) {
     let pieChart = null;
 
     // 1) Load facilities
-    $.getJSON('fetch_users.php', users => {
+    $.getJSON('/app/Controllers/fetch_users.php', users => {
       users.forEach(u => {
         $('#facilitySelect').append(
           `<option value="${u.id}">${u.name}</option>`
@@ -107,7 +109,7 @@ if (!isset($_COOKIE['user'])) {
       $('#sessionSelect').prop('disabled', true)
                          .html('<option value="" disabled selected>-- loading sessions --</option>');
       // Fetch sessions
-      $.getJSON('fetch_user_sessions.php',{ user_id: uid }, sessions => {
+      $.getJSON('/app/Controllers/fetch_user_sessions.php',{ user_id: uid }, sessions => {
         let rows = '', opts = '<option value="" disabled selected>-- select session --</option>';
         sessions.forEach(s=>{
           rows += `<tr>
@@ -133,7 +135,7 @@ if (!isset($_COOKIE['user'])) {
     $('#sessionSelect').on('change', function(){
       const sid = this.value;
       if(!sid) return;
-      $.getJSON('fetch_session_metals.php',{ session_id: sid }, metals => {
+      $.getJSON('/app/Controllers/fetch_session_metals.php',{ session_id: sid }, metals => {
         const labels = metals.map(m => m.metal);
         const data   = metals.map(m => parseFloat(m.value));
         if(pieChart) pieChart.destroy();

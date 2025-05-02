@@ -1,6 +1,6 @@
 <?php
 // signup.php
-require __DIR__ . '/config.php';
+require __DIR__ . '/../config/config.php';
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,16 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>Sign Up | Analytics Pro</title>
+  <title>Sign Up | CircuitXtract</title>
   <style>
-    body{display:flex;justify-content:center;align-items:center;
-      height:100vh;background:#2E2E30;color:#EEE;font-family:Arial,sans-serif;}
-    .box{background:rgba(255,255,255,0.1);padding:30px;border-radius:10px;width:300px;}
-    h2{margin-bottom:20px;} label{display:block;margin-bottom:10px;}
-    input{width:100%;padding:8px;margin-top:5px;border:none;border-radius:5px;}
-    button{width:100%;padding:10px;margin-top:20px;
-      background:#4EC5F1;border:none;border-radius:5px;color:#1C1C1E;cursor:pointer;}
-    .error{color:#E63946;margin-top:10px;}
+    body {
+      display: flex; justify-content: center; align-items: center;
+      height: 100vh; background: #2E2E30; color: #EEE; font-family: Arial, sans-serif;
+    }
+    .box {
+      background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 10px; width: 300px;
+    }
+    h2 { margin-bottom: 20px; }
+    label { display: block; margin-bottom: 10px; }
+    input {
+      width: 100%; padding: 8px; margin-top: 5px; border: none; border-radius: 5px;
+    }
+    button {
+      width: 100%; padding: 10px; margin-top: 20px;
+      background: #4EC5F1; border: none; border-radius: 5px; color: #1C1C1E; cursor: pointer;
+    }
+    .error { color: #E63946; margin-top: 10px; }
+    .login-link { margin-top: 15px; display: block; text-align: center; color: #4EC5F1; text-decoration: none; }
+    .login-link:hover { text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -54,10 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" name="password" minlength="6" required />
       </label>
       <button type="submit">Sign Up</button>
-      <?php if($error): ?>
-        <div class="error"><?=htmlspecialchars($error)?></div>
+      <?php if ($error): ?>
+        <div class="error"><?= htmlspecialchars($error) ?></div>
       <?php endif; ?>
     </form>
+    <a href="login.php" class="login-link">Already have an account? Login</a>
   </div>
 </body>
 </html>

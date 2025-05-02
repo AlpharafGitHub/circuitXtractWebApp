@@ -1,19 +1,22 @@
 <?php
 // Dashboard/help.php
-require __DIR__ . '/../config.php';
+require __DIR__ . '/../../config/config.php';
+
+// Check if the user is logged in
 if (!isset($_COOKIE['user'])) {
-    header('Location: ../index.php');
+    header('Location: /CircuitXtract/public/login.php');
     exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Help | CircuitXtract</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/CircuitXtract/public/assets/css/styles.css"/>
   <style>
-    /* same sidebar + main CSS */
     *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
     body,html{height:100%;background:#1C1C1E;color:#fff;}
     .container{display:flex;height:100vh;}
@@ -36,11 +39,11 @@ if (!isset($_COOKIE['user'])) {
   <div class="container">
     <nav class="sidebar">
       <ul>
-        <li><a href="admin_dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-        <li><a href="analytics.php"><i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
-        <li><a href="settings.php"><i class="fas fa-cog"></i><span>Settings</span></a></li>
-        <li><a href="help.php" class="active"><i class="fas fa-question-circle"></i><span>Help</span></a></li>
-        <li><a href="logout.php"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/admin_dashboard.php"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/analytics.php"><i class="fas fa-chart-pie"></i><span>Analytics</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/settings.php"><i class="fas fa-cog"></i><span>Settings</span></a></li>
+        <li><a href="/CircuitXtract/public/dashboard/help.php" class="active"><i class="fas fa-question-circle"></i><span>Help</span></a></li>
+        <li><a href="/CircuitXtract/public/logout.php" class="logout"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
       </ul>
     </nav>
     <div class="main">
